@@ -1,1 +1,1 @@
-# serverless-notes-app-client
+# Serverless Note App Client
