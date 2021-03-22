@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import AuthenticatedRoute from '../components/AuthenticatedRoute';
 import ErrorBoundary from '../components/ErrorBoundary';
 import PageLoader from '../components/PageLoader';
@@ -13,7 +13,7 @@ const Login = lazy(() => import('../pages/Login'));
 const NewNote = lazy(() => import('../pages/NewNote'));
 const PageNotFound = lazy(() => import('../pages/PageNotFound'));
 
-const Routes = () => 
+const Routes = () => (
   <ErrorBoundary>
     <Suspense fallback={<PageLoader />}>
       <Switch>
@@ -23,7 +23,7 @@ const Routes = () =>
         <UnAuthenticatedRoute path='/signup' exact>
           <SignUp />
         </UnAuthenticatedRoute>
-        <UnAuthenticatedRoute  path='/login' exact >
+        <UnAuthenticatedRoute path='/login' exact>
           <Login />
         </UnAuthenticatedRoute>
         <AuthenticatedRoute path='/notes/new' exact>
@@ -39,5 +39,6 @@ const Routes = () =>
       </Switch>
     </Suspense>
   </ErrorBoundary>
+);
 
 export default Routes;

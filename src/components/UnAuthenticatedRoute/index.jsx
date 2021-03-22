@@ -13,24 +13,20 @@ const queryString = (name, url = window.location.href) => {
     return '';
   }
   return decodeURIComponent(results[2].replace(/\+/g, ''));
-}
+};
 
 const UnAuthenticatedRoute = ({ children, ...rest }) => {
   const { isAuthenticated } = useAppContext();
   const redirect = queryString('redirect');
   return (
     <Route {...rest}>
-      {
-        !isAuthenticated ? (
-          children
-        ) : (
-          <Redirect to={
-            redirect === '' || redirect === null ? '/' : redirect
-          } />
-        )
-      }
+      {!isAuthenticated ? (
+        children
+      ) : (
+        <Redirect to={redirect === '' || redirect === null ? '/' : redirect} />
+      )}
     </Route>
   );
-}
+};
 
 export default UnAuthenticatedRoute;

@@ -5,26 +5,27 @@ import Loader from '../Loader';
 
 const LoaderButton = ({
   isLoading,
-  classNames='',
+  classNames = '',
   disabled = false,
-  clickHandler=() => {},
+  clickHandler = () => {},
   ...props
 }) => {
   return (
-    <button className={clsx('loader-button', classNames)} onClick={clickHandler}
-    disabled={disabled || isLoading} {...props}>
-    {
-      isLoading ? <Loader width={20} height={20} /> : null
-    }
-    {props.children}
-  </button>
-  )
-}
+    <button
+      className={clsx('loader-button', classNames)}
+      onClick={clickHandler}
+      disabled={disabled || isLoading}
+      {...props}>
+      {isLoading ? <Loader width={20} height={20} /> : null}
+      {props.children}
+    </button>
+  );
+};
 
 LoaderButton.propTypes = {
   isLoading: PropTypes.bool,
   classNames: PropTypes.string,
   disabled: PropTypes.bool,
-}
+};
 
 export default memo(LoaderButton);

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import API from '@aws-amplify/api';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import config from '../../config';
@@ -30,7 +31,11 @@ const Settings = () => {
         storage,
         source: token.id,
       });
-      setMessageDisplay(true, 'Your card has been charged successfully', 'success');
+      setMessageDisplay(
+        true,
+        'Your card has been charged successfully',
+        'success'
+      );
       history.push('/');
     } catch (err) {
       console.error(err);
@@ -39,22 +44,33 @@ const Settings = () => {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   const billUser = (details) => {
     return API.post('notes', '/billing', {
       body: details,
     });
-  }
+  };
   return (
-    <div className='settings column is-11-mobile is-half-tablet is-half-desktop is-half-widescreen is-half-fullhd'>
-      <StripeProvider stripe={stripe}>
-        <Elements fonts={[{ cssSrc: "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" , },]}>
-          <BillingForm isLoading={isLoading} onSubmit={handleOnSubmit} />
-        </Elements>
-      </StripeProvider>
-    </div>
-  )
-}
+    <>
+      <Helmet>
+        <title>Settings | Serverless Notes App</title>
+      </Helmet>
+      <div className='settings column is-11-mobile is-half-tablet is-half-desktop is-half-widescreen is-half-fullhd'>
+        <StripeProvider stripe={stripe}>
+          <Elements
+            fonts={[
+              {
+                cssSrc:
+                  'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800',
+              },
+            ]}>
+            <BillingForm isLoading={isLoading} onSubmit={handleOnSubmit} />
+          </Elements>
+        </StripeProvider>
+      </div>
+    </>
+  );
+};
 
 export default Settings;

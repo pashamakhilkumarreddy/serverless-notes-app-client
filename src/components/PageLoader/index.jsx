@@ -9,11 +9,11 @@ const PageLoader = ({ width = 80, height = 80 }) => {
       <div></div>
     </RippleLoader>
   );
-}
+};
 
 PageLoader.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
-}
+};
 
 export default memo(PageLoader);

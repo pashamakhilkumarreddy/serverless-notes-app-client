@@ -10,7 +10,7 @@ const Footer = () => {
         </p>
       </div>
     </PageFooter>
-  )
-}
+  );
+};
 
 export default memo(Footer);

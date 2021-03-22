@@ -31,7 +31,7 @@ const Home = () => {
       }
     }
     onLoad();
-  }, [isAuthenticated]);
+  }, [isAuthenticated]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const loadNotes = () => {
     return API.get('notes', '/notes');
@@ -39,6 +39,9 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Home | Serverless Notes App</title>
+      </Helmet>
       <div className='column is-full has-text-centered'>
         <Link to='/notes/new' className='button is-link'>
           <ion-icon name='add-outline'></ion-icon>

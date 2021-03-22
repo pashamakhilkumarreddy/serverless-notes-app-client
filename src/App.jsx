@@ -43,7 +43,7 @@ const App = () => {
 
   useEffect(() => {
     onLoad();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onLoad = async () => {
     try {

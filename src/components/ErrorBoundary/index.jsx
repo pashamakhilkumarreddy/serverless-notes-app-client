@@ -6,14 +6,14 @@ class ErrorBoundary extends Component {
     super(props);
     this.state = {
       hasError: true,
-    }
+    };
   }
 
   static getDerivedStateFromError(error) {
     console.error(error);
     return {
       hasError: true,
-    }
+    };
   }
 
   componentDidCatch(error, errorInfo) {
@@ -22,7 +22,7 @@ class ErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-      <Error />
+      <Error />;
     }
     return this.props.children;
   }
@@ -35,7 +35,7 @@ const Error = () => {
         <img src={ErrorImg} alt='Error' loading='eager' decoding='sync' />
       </figure>
     </div>
-  )
-}
+  );
+};
 
 export default ErrorBoundary;
