@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { logError } from '../../utils/errorUtil';
 import ErrorImg from '../../assets/images/Error.gif';
 
 class ErrorBoundary extends Component {
@@ -17,7 +18,7 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error(error, errorInfo);
+    logError(error, errorInfo);
   }
 
   render() {

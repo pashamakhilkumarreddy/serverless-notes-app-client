@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { createBrowserHistory } from "history";
+import { createBrowserHistory } from 'history';
 import { Amplify } from 'aws-amplify';
+import { initSentry } from './utils/errorUtil';
 import config from './config';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/bulma/css/bulma.min.css';
 import './index.css';
+
+initSentry();
 
 const helmetContext = {};
 const history = createBrowserHistory();
