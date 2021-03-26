@@ -6,7 +6,7 @@ class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hasError: true,
+      hasError: false,
     };
   }
 
@@ -23,7 +23,7 @@ class ErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-      <Error />;
+      return <Error />;
     }
     return this.props.children;
   }
@@ -32,6 +32,10 @@ class ErrorBoundary extends Component {
 const Error = () => {
   return (
     <div className='column is-11-mobile is-11-tablet is-10-desktop is-10-widescreen is-10-fullhd'>
+      <h2 className='title is-2 has-text-centered'>
+        Something went wrong! It is not you it could be us. <br />
+        Our best minds are on it.
+      </h2>
       <figure className='image is-square'>
         <img src={ErrorImg} alt='Error' loading='eager' decoding='sync' />
       </figure>
